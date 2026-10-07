@@ -1,0 +1,49 @@
+##############
+# Questions: #
+##############
+
+# 1. How many people are there?
+# 2. How many people are aged around 30 or older?
+# 3. How many people are called Jan?
+# 4. What is the most common country of birth, and of the people from this country, how many are around 50 or older?
+# 5. What are the names, in reverse alphabetical order within each country of birth, of the people with "edu" email addresses?
+
+###############
+# My answers: #
+###############
+
+cp /localdisk/data/BPSM/Lecture03/example_people_data.tsv ~/BPSM_Exercises/Lecture_03_Monday_29.09.26
+cat example_people_data.tsv
+
+grep -v "^$" example_people_data.tsv | grep -v "name" | wc -l
+# match only those lines that are not empty, and are not the header, and count the number of lines
+
+grep -v "^$" example_people_data.tsv | grep -v "name" > "example_people_data2.tsv"
+# save the list of people (without empty lines and headers) to another file
+
+# 29/09/1996
+awk 'BEGIN{FS="\t";} ($4<=29) && ($5<=9) && ($6<=1996)' example_people_data2.tsv | wc -l
+
+cut -f1 example_people_data2.tsv | grep -i "Jan$" | wc -l
+
+cut -f7 example_people_data2.tsv | sort | uniq -c | awk 'BEGIN{FS=" "} {if($1>counter) {counter=$1; country=$2}} END {print country}'
+# extract column 7 (list of countries); sort them and count number of unique countries
+# 'counter' is an uninitialised variable so by default has value 0
+# loop through each line (with count of countries as $1) and return the country with the highest value
+
+awk 'BEGIN{FS="\t"} ($7=="Mozambique") && ($4<=29) && ($5<=9) && ($6<=1976)' example_people_data2.tsv | wc -l
+# (would be nice to combine 4 + 5)
+
+sort -r -k7,7 example_people_data2.tsv | awk 'BEGIN{FS="\t"} {print $1, "\t", $2}' | grep ".edu$" | awk 'BEGIN{FS="\t"} {print $1} > names.txt
+# sort rows by reverse alphabetical order of countries
+# extract columns 1 and 2 (names and email)
+# return rows that end in .edu
+# print only names from these rows (and redirect output to 'names.txt')
+
+# Answers:
+# 1. People in total: 100
+# 2. People aged 30 or older: 69
+# 3. People named 'Jan': 1
+# 4. Most common country of birth: Mozambique
+# 4. ^ Number of people from this country aged 50 or older: 1
+# 5. (for names, see 'names.txt')
