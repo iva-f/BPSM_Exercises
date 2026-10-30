@@ -8,9 +8,9 @@
 # 4. What is the most common country of birth, and of the people from this country, how many are around 50 or older?
 # 5. What are the names, in reverse alphabetical order within each country of birth, of the people with "edu" email addresses?
 
-###############
-# My answers: #
-###############
+#############
+# Answers: #
+#############
 
 cp /localdisk/data/BPSM/Lecture03/example_people_data.tsv ~/BPSM_Exercises/Lecture_03_Monday_29.09.26
 cat example_people_data.tsv
