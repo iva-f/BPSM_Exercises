@@ -20,6 +20,6 @@ for i in exons: # e.g. "5,58"
 
 sequence_string = "".join(sequence_list) # join exons in 'sequence_list' into one string
 
-with open("output2.txt", "w") as conn:
+with open("Q2_output.txt", "w") as conn:
     conn.write(sequence_string)
 

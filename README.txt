@@ -13,4 +13,4 @@
 [X] L9. SQL
 [/] L10. Python 1
 [/] L11. Python 2
-[X] L12. Python 3
+[/] L12. Python 3
