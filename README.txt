@@ -11,6 +11,7 @@
 [X] L8. HPC
 
 [X] L9. SQL
-[/] L10. Python 1
-[/] L11. Python 2
-[/] L12. Python 3
+[/] L10. Python 1 Monday 27.10.26
+[/] L11. Python 2 Friday 30.10.26
+[/] L12. Python 3 Monday 03.11.26
+[/] L13. Python 4 Friday 06.11.26
